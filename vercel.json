@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/server/client/index.html"
+    },
+    {
+      "src": "/style.css",
+      "dest": "/server/client/style.css"
+    },
+    {
+      "src": "/script.js",
+      "dest": "/server/client/script.js"
+    },
+    {
+      "src": "/ai-score",
+      "dest": "/api/index.js"
+    }
+  ]
+}
