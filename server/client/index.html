@@ -2,29 +2,115 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Resume AI Analyzer</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resume ATS Analyzer</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body class="bg-gray-100 min-h-screen flex justify-center items-center">
+<body>
+  <div class="container">
+    <header>
+      <h1>Resume ATS Analyzer</h1>
+      <p>Upload your resume, paste a job description, and check your ATS match score.</p>
+    </header>
 
-  <div class="bg-white shadow-md rounded-lg p-8 max-w-xl w-full">
-    <h1 class="text-2xl font-bold text-indigo-700 mb-6 text-center">📄 Resume AI Analyzer</h1>
-    <form id="uploadForm">
-      <input type="file" name="resume" accept=".pdf" required class="mb-4 w-full border p-2" />
-      <button type="submit" class="w-full bg-indigo-600 text-white py-2 rounded hover:bg-indigo-700 transition">
-        Analyze Resume
-      </button>
-    </form>
+    <main class="card">
+      <label>Upload Resume PDF</label>
+      <input type="file" id="resume" accept="application/pdf" />
 
-    <div id="result" class="mt-6 hidden">
-      <h2 class="text-lg font-semibold text-green-600">✅ ATS Score:</h2>
-      <p id="score" class="text-xl font-bold text-gray-800 mt-2"></p>
-      <p id="strengths" class="mt-2 text-gray-700"></p>
-      <p id="weaknesses" class="mt-2 text-red-600"></p>
-      <p id="tips" class="mt-2 text-blue-700"></p>
-    </div>
+      <label>Job Description</label>
+      <textarea id="jobDescription" placeholder="Paste the job description here..."></textarea>
+
+      <label>FAANG-style Resume Focus</label>
+      <select id="faangFocus">
+        <option value="">Select focus area</option>
+        <option value="data structures algorithms problem solving coding complexity optimization">
+          Software Engineering / DSA
+        </option>
+        <option value="react javascript node express api frontend backend system design">
+          Full Stack Development
+        </option>
+        <option value="machine learning python data analysis model api artificial intelligence">
+          AI / ML
+        </option>
+        <option value="cloud aws docker kubernetes scalability distributed systems">
+          Cloud / Backend Systems
+        </option>
+      </select>
+
+      <button onclick="analyzeResume()">Analyze Resume</button>
+
+      <section id="result" class="result hidden">
+        <h2>Analysis Result</h2>
+        <p><strong>ATS Score:</strong> <span id="score"></span>%</p>
+
+        <h3>Matched Keywords</h3>
+        <div id="matched" class="chips"></div>
+
+        <h3>Missing Keywords</h3>
+        <div id="missing" class="chips red"></div>
+
+        <h3>Suggestions</h3>
+        <ul id="suggestions"></ul>
+      </section>
+    </main>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    async function analyzeResume() {
+      const resume = document.getElementById("resume").files[0];
+      const jobDescription = document.getElementById("jobDescription").value;
+      const faangFocus = document.getElementById("faangFocus").value;
+      const result = document.getElementById("result");
+
+      if (!resume) {
+        alert("Please upload a resume PDF.");
+        return;
+      }
+
+      const finalJD = jobDescription + " " + faangFocus;
+
+      const formData = new FormData();
+      formData.append("resume", resume);
+      formData.append("jobDescription", finalJD);
+
+      result.classList.remove("hidden");
+      document.getElementById("score").innerText = "Analyzing...";
+      document.getElementById("matched").innerHTML = "";
+      document.getElementById("missing").innerHTML = "";
+      document.getElementById("suggestions").innerHTML = "";
+
+      try {
+        const response = await fetch("http://localhost:5000/ai-score", {
+          method: "POST",
+          body: formData,
+        });
+
+        const data = await response.json();
+
+        if (data.error) {
+          document.getElementById("score").innerText = "Error";
+          document.getElementById("suggestions").innerHTML =
+            `<li>${data.error}</li>`;
+          return;
+        }
+
+        document.getElementById("score").innerText = data.atsScore;
+
+        document.getElementById("matched").innerHTML =
+          data.matchedKeywords.slice(0, 25).map(k => `<span>${k}</span>`).join("");
+
+        document.getElementById("missing").innerHTML =
+          data.missingKeywords.slice(0, 25).map(k => `<span>${k}</span>`).join("");
+
+        document.getElementById("suggestions").innerHTML =
+          data.suggestions.map(s => `<li>${s}</li>`).join("");
+
+      } catch (error) {
+        document.getElementById("score").innerText = "Error";
+        document.getElementById("suggestions").innerHTML =
+          `<li>${error.message}</li>`;
+      }
+    }
+  </script>
 </body>
 </html>
