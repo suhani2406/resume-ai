@@ -4,6 +4,13 @@ Upload your resume in PDF format and get instant AI-powered feedback — includi
 
 > 🚀 Built with Node.js, Express, OpenAI GPT, and vanilla JavaScript frontend.
 
+
+<img width="774" height="451" alt="Screenshot 2026-06-01 120910" src="https://github.com/user-attachments/assets/ce0cc6b8-aaba-40d7-8aac-15a6809f42f2" />
+<img width="669" height="204" alt="Screenshot 2026-06-01 120921" src="https://github.com/user-attachments/assets/9b641fac-5800-4814-977b-ec4229d4a5e3" />
+<img width="447" height="385" alt="Screenshot 2026-06-01 123113" src="https://github.com/user-attachments/assets/29d7ced2-01a2-4f4e-9b58-e61d3de85a30" />
+
+
+
 ---
 
 ## ✨ Features
