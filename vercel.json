@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "api/index.js", "use": "@vercel/node" },
+    { "src": "client/**", "use": "@vercel/static" }
+  ],
+  "routes": [
+    { "src": "/ai-score", "dest": "/api/index.js" },
+    { "src": "/interview-react", "dest": "/api/index.js" },
+    { "src": "/interview-report", "dest": "/api/index.js" },
+    { "src": "/round-transition", "dest": "/api/index.js" },
+    { "src": "/(.*)", "dest": "/client/$1" }
+  ]
+}

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resume ATS Analyzer + AI Interviewer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Resume ATS Analyzer</h1>
+      <p>Upload your resume, add the job title + description, and get an ATS score plus a live mock interview.</p>
+    </header>
+
+    <main class="card">
+      <label>Upload Resume PDF</label>
+      <input type="file" id="resume" accept="application/pdf" />
+
+      <label>Target Job Title <span class="optional">(optional — AI will infer it if left blank)</span></label>
+      <input type="text" id="jobTitleInput" placeholder="e.g. Frontend Developer, SDE Intern, Data Analyst" />
+
+      <label>Job Description</label>
+      <textarea id="jobDescription" placeholder="Paste the job description here..."></textarea>
+
+      <label>FAANG-style Resume Focus</label>
+      <select id="faangFocus">
+        <option value="">Select focus area</option>
+        <option value="data structures algorithms problem solving coding complexity optimization">
+          Software Engineering / DSA
+        </option>
+        <option value="react javascript node express api frontend backend system design">
+          Full Stack Development
+        </option>
+        <option value="machine learning python data analysis model api artificial intelligence">
+          AI / ML
+        </option>
+        <option value="cloud aws docker kubernetes scalability distributed systems">
+          Cloud / Backend Systems
+        </option>
+      </select>
+
+      <label>Interview Round</label>
+      <select id="interviewRound">
+        <option value="mixed">Mixed (Technical + HR)</option>
+        <option value="hr">HR / Behavioral Round</option>
+        <option value="technical">Technical Round</option>
+      </select>
+
+      <button id="analyzeBtn">Analyze Resume</button>
+
+      <section id="result" class="result hidden">
+        <h2>ATS Keyword Match</h2>
+        <p><strong>Keyword Score:</strong> <span id="score"></span>%</p>
+
+        <h3>Matched Keywords</h3>
+        <div id="matched" class="chips"></div>
+
+        <h3>Missing Keywords</h3>
+        <div id="missing" class="chips red"></div>
+
+        <h3>Suggestions</h3>
+        <ul id="suggestions"></ul>
+      </section>
+
+      <section id="aiAtsResult" class="result hidden">
+        <h2>AI ATS Review</h2>
+        <p id="aiAtsErrorMsg" class="hidden error-text"></p>
+        <div id="aiAtsBody" class="hidden">
+          <p><strong>AI Score:</strong> <span id="aiAtsScore"></span>/100</p>
+          <h3>Strengths</h3>
+          <ul id="aiAtsStrengths"></ul>
+          <h3>Gaps</h3>
+          <ul id="aiAtsGaps"></ul>
+          <h3>Formatting Issues</h3>
+          <ul id="aiAtsFormatting"></ul>
+        </div>
+      </section>
+
+      <section id="interviewResult" class="result hidden">
+        <h2>Interview Prep <span id="jobTitle" class="job-title-badge"></span></h2>
+        <p id="interviewErrorMsg" class="hidden error-text"></p>
+        <ol id="interviewQuestions" class="interview-questions"></ol>
+        <button id="startLiveInterviewBtn" class="hidden">🎤 Start Live Interview</button>
+      </section>
+
+      <section id="liveInterview" class="result hidden">
+        <h2>Live Interview <span id="liveProgress" class="job-title-badge"></span></h2>
+        <p id="roundTransitionLine" class="round-transition hidden"></p>
+        <p id="liveQuestion" class="live-question"></p>
+
+        <div class="live-controls">
+          <button id="micBtn">🎤 Start Answering</button>
+          <span id="micStatus" class="mic-status"></span>
+          <button id="muteBtn" class="mute-btn" title="Toggle spoken interviewer voice">🔊</button>
+        </div>
+
+        <label>Your Answer (edit if the transcription is off)</label>
+        <textarea id="liveAnswerText" placeholder="Your spoken answer will appear here as you talk..."></textarea>
+
+        <button id="submitAnswerBtn">Submit Answer</button>
+
+        <div id="aiReaction" class="ai-reaction hidden"></div>
+        <button id="nextQuestionBtn" class="hidden">Next Question →</button>
+      </section>
+
+      <section id="interviewReport" class="result hidden">
+        <h2>Interview Report</h2>
+        <p id="overallScore" class="overall-score"></p>
+        <p id="reportSummary"></p>
+        <div id="reportItems" class="report-items"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

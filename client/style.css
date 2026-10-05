@@ -1,0 +1,296 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #eef2ff, #f8fafc);
+  color: #111827;
+}
+
+.container {
+  width: 90%;
+  max-width: 900px;
+  margin: auto;
+  padding: 40px 0;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+header h1 {
+  font-size: 42px;
+  color: #1e3a8a;
+  margin-bottom: 10px;
+}
+
+header p {
+  color: #64748b;
+  font-size: 17px;
+}
+
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 22px;
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.12);
+}
+
+label {
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 8px;
+  font-weight: 700;
+  color: #334155;
+}
+
+.optional {
+  font-weight: 400;
+  color: #94a3b8;
+  font-size: 13px;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 14px;
+  font-size: 15px;
+  outline: none;
+}
+
+textarea {
+  min-height: 180px;
+  resize: vertical;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+button {
+  width: 100%;
+  margin-top: 25px;
+  padding: 15px;
+  border: none;
+  border-radius: 16px;
+  background: #2563eb;
+  color: white;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+.result {
+  margin-top: 30px;
+  padding: 24px;
+  border-radius: 18px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+}
+
+.result h2 {
+  color: #1e3a8a;
+  margin-bottom: 15px;
+}
+
+.result h3 {
+  margin-top: 18px;
+  margin-bottom: 10px;
+  color: #334155;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.chips span {
+  background: #dcfce7;
+  color: #166534;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.chips.red span {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+ul {
+  padding-left: 22px;
+  color: #475569;
+}
+
+li {
+  margin-bottom: 8px;
+}
+
+.hidden {
+  display: none;
+}
+
+.job-title-badge {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2563eb;
+}
+
+.interview-questions {
+  padding-left: 22px;
+  color: #334155;
+}
+
+.interview-questions li {
+  margin-bottom: 14px;
+  line-height: 1.5;
+}
+
+.q-category {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 3px 8px;
+  border-radius: 999px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.q-category.technical {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.q-category.behavioral {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.error-text {
+  color: #b91c1c;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+#startLiveInterviewBtn,
+#micBtn,
+#submitAnswerBtn,
+#nextQuestionBtn {
+  width: auto;
+  margin-top: 16px;
+  padding: 12px 20px;
+  font-size: 15px;
+}
+
+.live-controls {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 10px;
+}
+
+.mic-status {
+  font-size: 14px;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.mute-btn {
+  width: auto;
+  margin-top: 0;
+  padding: 10px 14px;
+  font-size: 16px;
+  background: #e2e8f0;
+  color: #1e293b;
+}
+
+.mute-btn.muted {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.round-transition {
+  font-style: italic;
+  color: #2563eb;
+  margin-bottom: 10px;
+}
+
+.live-question {
+  font-size: 17px;
+  font-weight: 600;
+  color: #1e293b;
+  line-height: 1.6;
+}
+
+#liveAnswerText {
+  min-height: 100px;
+}
+
+.ai-reaction {
+  margin-top: 18px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: #eef2ff;
+  color: #3730a3;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.overall-score {
+  font-size: 32px;
+  font-weight: 800;
+  color: #1e3a8a;
+  margin-bottom: 6px;
+}
+
+.report-items {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.report-item {
+  padding: 16px;
+  border-radius: 14px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+}
+
+.report-item-q {
+  color: #1e293b;
+  margin-bottom: 6px;
+}
+
+.report-item-score {
+  font-weight: 700;
+  color: #2563eb;
+  margin-bottom: 6px;
+}
+
+.report-item-feedback {
+  color: #475569;
+  font-size: 14px;
+  line-height: 1.5;
+}
