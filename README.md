@@ -5,6 +5,18 @@ Upload a resume PDF, add a target job title + JD, get an ATS score two ways
 questions, and a live voice mock interview with a reactive AI interviewer
 and a final scored report.
 
+<img width="1170" height="520" alt="image" src="https://github.com/user-attachments/assets/f7d87685-230c-4edd-aa09-b6154140cffe" />
+
+<img width="1003" height="690" alt="image" src="https://github.com/user-attachments/assets/47fbf75f-c797-4bbe-b06e-9f7932c521d0" />
+
+<img width="1096" height="651" alt="image" src="https://github.com/user-attachments/assets/7c79ea2a-487a-4b4c-963c-5b6d316f95e8" />
+
+<img width="1148" height="687" alt="image" src="https://github.com/user-attachments/assets/e1c9b985-8de1-466c-9ee8-d71449951dfd" />
+
+
+
+
+
 ## Structure
 
 ```
